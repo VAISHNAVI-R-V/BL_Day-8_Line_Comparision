@@ -5,37 +5,81 @@ import java.util.Scanner;
 public class LineComparisionComputation {
 
     public static void main(String[] args) {
+
+        System.out.println("Welcome to Line Comparison Problem!");
+
+        //Calculating length of first Line by calling lengthOfLine method
+        System.out.println("Enter First Line Details : ");
+        double firstLineLength = lengthOfLine();
+
+        System.out.println();
+
+        //Calculating length of second line by calling lengthOfLine method
+        System.out.println("Enter Second Line Details : ");
+        double secondLineLength = lengthOfLine();
+
+        equalityOfLines(firstLineLength, secondLineLength);
+        comparisonOfLines(firstLineLength, secondLineLength);
+
+        System.out.println("Length of the first line is : " + firstLineLength);
+        System.out.println("Length of the second line is : " + secondLineLength);
+    }
+
+    // returns length of line
+    public static double lengthOfLine() {
+
+        System.out.println("Enter the start co-ordinates (x1,y1) :");
+        int x1 = readInt();
+        int y1 = readInt();
+
+        System.out.println("Enter the end co-ordinates (x2,y2) : ");
+        int x2 = readInt();
+        int y2 = readInt();
+
+        return lengthCalculator(x1, y1, x2, y2);
+    }
+
+    // reads user input and returns integer number
+    public static int readInt() {
         Scanner sc = new Scanner(System.in);
+        return sc.nextInt();
+    }
 
-        System.out.println("Enter the value of (X1 & X2) & (Y1 & Y2) : ");
-        float X1 = sc.nextFloat();
-        float X2 = sc.nextFloat();
-        float Y1 = sc.nextFloat();
-        float Y2 = sc.nextFloat();
-        double lengthOfLineA;
-        lengthOfLineA = Math.sqrt(((X2 - X1) * (X2 - X1)) + ((Y2 - Y1) * (Y2 - Y1)));
-        System.out.println("Two points of Line A are :  " + lengthOfLineA);
+    // Calculates Length of line by applying formula and returns the value
+    public static double lengthCalculator(int x1, int y1, int x2, int y2) {
 
-        System.out.println("Enter the value of (R1 & R2) & (S1 & S2) : ");
-        float R1 = sc.nextFloat();
-        float R2 = sc.nextFloat();
-        float S1 = sc.nextFloat();
-        float S2 = sc.nextFloat();
-        double lengthOfLineB;
-        lengthOfLineB = Math.sqrt(((R2 - R1) * (R2 - R1)) + ((S2 - S1) * (S2 - S1)));
-        System.out.println("Two points of Line A are :  " + lengthOfLineB);
+        return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 
-        String st1 = String.valueOf(lengthOfLineA);
-        String st2 = String.valueOf(lengthOfLineB);
+    }
 
-        if (st1.compareTo(st2) == 0)
-            System.out.println(" Line A and Line B are equal ");
-        else if (st1.compareTo(st2) < 0)
-            System.out.println("Line A is Greater than length of the Line B ");
-        else if (st1.compareTo(st2) > 0) {
-            System.out.println("Line A is Less than length of the Line B ");
-        }
-        System.out.println("Length Of Line A is : " + lengthOfLineA);
-        System.out.println("Length Of Line B is : " + lengthOfLineB);
+    // Checks equality of Two Lines
+    public static void equalityOfLines(double l1, double l2) {
+
+        String line1 = String.valueOf(l1);
+        String line2 = String.valueOf(l2);
+
+        if (line1.equals(line2))
+            System.out.println("The length of both lines is equal");
+
+        else
+            System.out.println("The length of both lines in not equal");
+
+    }
+
+    // Compares Length Of Two Lines
+    public static void comparisonOfLines(double l1, double l2) {
+
+        String line1 = String.valueOf(l1);
+        String line2 = String.valueOf(l2);
+
+        if (line1.compareTo(line2) == 0)
+            System.out.println("Length of Line 1 is equal to Line 2");
+
+        else if (line1.compareTo(line2) < 0)
+            System.out.println("Length of Line 1 is less than Line 2");
+
+        else if (line1.compareTo(line2) > 0)
+            System.out.println("Length of Line 1 is greater than Line 2");
+
     }
 }
